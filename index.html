@@ -14,63 +14,91 @@
         .text-gold { color: #D4AF37; }
         .bg-gold { background-color: #D4AF37; }
         .border-gold { border-color: #D4AF37; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+
+        /* CSS-ONLY TAB CONTROL */
+        .tab-panel { display: none; }
+        
+        #tab-radio-home:checked ~ main #panel-home { display: block; }
+        #tab-radio-about:checked ~ main #panel-about { display: block; }
+        #tab-radio-services:checked ~ main #panel-services { display: block; }
+        #tab-radio-specialization:checked ~ main #panel-specialization { display: block; }
+        #tab-radio-contact:checked ~ main #panel-contact { display: block; }
+
+        /* ACTIVE TAB LINK HIGHLIGHTING */
+        #tab-radio-home:checked ~ nav .lbl-home { color: #D4AF37; font-weight: 600; }
+        #tab-radio-about:checked ~ nav .lbl-about { color: #D4AF37; font-weight: 600; }
+        #tab-radio-services:checked ~ nav .lbl-services { color: #D4AF37; font-weight: 600; }
+        #tab-radio-specialization:checked ~ nav .lbl-specialization { color: #D4AF37; font-weight: 600; }
+        #tab-radio-contact:checked ~ nav .lbl-contact { color: #D4AF37; font-weight: 600; }
+
+        /* PURE CSS MOBILE MENU DRAWER TOGGLE */
+        #mobile-menu-toggle:checked ~ nav #mobile-drawer { display: flex; }
+        #mobile-menu-toggle:checked ~ nav #icon-hamburger { display: none; }
+        #mobile-menu-toggle:checked ~ nav #icon-close { display: block; }
     </style>
 </head>
 <body class="bg-navy-900 text-gray-200 antialiased selection:bg-gold selection:text-navy-900 min-h-screen flex flex-col justify-between">
 
-    <!-- Global Navigation -->
+    <!-- HIDDEN CONTROLLERS (Pure CSS Logic) -->
+    <input type="radio" name="tab-controller" id="tab-radio-home" class="hidden" checked>
+    <input type="radio" name="tab-controller" id="tab-radio-about" class="hidden">
+    <input type="radio" name="tab-controller" id="tab-radio-services" class="hidden">
+    <input type="radio" name="tab-controller" id="tab-radio-specialization" class="hidden">
+    <input type="radio" name="tab-controller" id="tab-radio-contact" class="hidden">
+    <input type="checkbox" id="mobile-menu-toggle" class="hidden">
+
+    <!-- GLOBAL NAVIGATION -->
     <nav class="fixed w-full z-50 bg-navy-900/95 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex justify-between items-center">
+            
             <!-- Brand Logo -->
-            <button onclick="switchTab('home')" class="flex items-center space-x-3 focus:outline-none">
+            <label for="tab-radio-home" class="cursor-pointer flex items-center space-x-3">
                 <span class="text-xl sm:text-2xl font-bold tracking-widest text-white brand-font">BRANNA<span class="text-gold">.</span></span>
-            </button>
+            </label>
 
             <!-- Desktop Links -->
             <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider text-slate-300">
-                <button onclick="switchTab('home')" id="nav-home" class="nav-btn text-gold font-semibold transition hover:text-gold">Home</button>
-                <button onclick="switchTab('about')" id="nav-about" class="nav-btn transition hover:text-gold">About</button>
-                <button onclick="switchTab('services')" id="nav-services" class="nav-btn transition hover:text-gold">Core Risk Practice</button>
-                <button onclick="switchTab('specialization')" id="nav-specialization" class="nav-btn transition hover:text-gold">Capabilities</button>
-                <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn transition hover:text-gold">Contact</button>
+                <label for="tab-radio-home" class="lbl-home cursor-pointer transition hover:text-gold">Home</label>
+                <label for="tab-radio-about" class="lbl-about cursor-pointer transition hover:text-gold">About</label>
+                <label for="tab-radio-services" class="lbl-services cursor-pointer transition hover:text-gold">Core Risk Practice</label>
+                <label for="tab-radio-specialization" class="lbl-specialization cursor-pointer transition hover:text-gold">Capabilities</label>
+                <label for="tab-radio-contact" class="lbl-contact cursor-pointer transition hover:text-gold">Contact</label>
             </div>
 
             <!-- Desktop CTA -->
-            <button onclick="switchTab('contact')" class="hidden md:inline-block px-5 py-2.5 rounded border border-gold text-gold hover:bg-gold hover:text-navy-900 transition font-medium text-sm">
+            <label for="tab-radio-contact" class="hidden md:inline-block px-5 py-2.5 rounded border border-gold text-gold hover:bg-gold hover:text-navy-900 transition font-medium text-sm cursor-pointer">
                 Engage Advisory
-            </button>
+            </label>
 
-            <!-- Mobile Hamburger Toggle Button -->
-            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-300 hover:text-gold focus:outline-none" aria-label="Toggle Menu">
-                <svg id="hamburger-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Mobile Hamburger Button -->
+            <label for="mobile-menu-toggle" class="md:hidden p-2 text-slate-300 hover:text-gold cursor-pointer">
+                <svg id="icon-hamburger" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
-                <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
-            </button>
+            </label>
         </div>
 
-        <!-- Mobile Drawer Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-slate-800 px-6 pt-4 pb-8 space-y-4">
-            <button onclick="switchTab('home')" id="mobile-nav-home" class="mobile-nav-btn block w-full text-left py-2.5 text-base font-medium text-gold border-b border-slate-800/60 uppercase tracking-wider">Home</button>
-            <button onclick="switchTab('about')" id="mobile-nav-about" class="mobile-nav-btn block w-full text-left py-2.5 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider">About</button>
-            <button onclick="switchTab('services')" id="mobile-nav-services" class="mobile-nav-btn block w-full text-left py-2.5 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider">Core Risk Practice</button>
-            <button onclick="switchTab('specialization')" id="mobile-nav-specialization" class="mobile-nav-btn block w-full text-left py-2.5 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider">Capabilities</button>
-            <button onclick="switchTab('contact')" id="mobile-nav-contact" class="mobile-nav-btn block w-full text-left py-2.5 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider">Contact</button>
-            <button onclick="switchTab('contact')" class="w-full mt-4 px-5 py-3 rounded border border-gold text-gold text-center font-medium text-sm uppercase tracking-wider">
+        <!-- Mobile Menu Drawer (Cascades vertically on phone screens) -->
+        <div id="mobile-drawer" class="hidden md:hidden flex-col bg-navy-900 border-b border-slate-800 px-6 pt-4 pb-8 space-y-3">
+            <label for="tab-radio-home" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-home block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">Home</label>
+            <label for="tab-radio-about" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-about block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">About</label>
+            <label for="tab-radio-services" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-services block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">Core Risk Practice</label>
+            <label for="tab-radio-specialization" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-specialization block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">Capabilities</label>
+            <label for="tab-radio-contact" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-contact block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">Contact</label>
+            <label for="tab-radio-contact" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="block w-full mt-4 px-5 py-3 rounded border border-gold text-gold text-center font-medium text-sm uppercase tracking-wider cursor-pointer">
                 Engage Advisory
-            </button>
+            </label>
         </div>
     </nav>
 
-    <!-- MAIN CONTAINER WITH DYNAMIC TABS -->
+    <!-- MAIN PANELS CONTAINER -->
     <main class="pt-20 flex-grow">
 
-        <!-- TAB 1: LANDING PAGE / HOME -->
-        <div id="tab-home" class="tab-content active">
+        <!-- PANEL 1: LANDING PAGE / HOME -->
+        <div id="panel-home" class="tab-panel">
             <section class="relative bg-gradient-to-b from-navy-800 via-navy-900 to-navy-900 border-b border-slate-800/80 py-16 sm:py-28 md:py-36">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8">
                     <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gold font-semibold px-3 py-1.5 rounded-full border border-gold/30 bg-gold/10 inline-block">
@@ -85,19 +113,19 @@
                     </p>
 
                     <div class="pt-4 sm:pt-6 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
-                        <button onclick="switchTab('about')" class="w-full sm:w-auto px-6 py-3.5 bg-gold text-navy-900 font-bold rounded hover:bg-yellow-500 transition text-sm uppercase tracking-wider">
+                        <label for="tab-radio-about" class="w-full sm:w-auto px-6 py-3.5 bg-gold text-navy-900 font-bold rounded hover:bg-yellow-500 transition text-sm uppercase tracking-wider text-center cursor-pointer">
                             Explore About & Leadership
-                        </button>
-                        <button onclick="switchTab('services')" class="w-full sm:w-auto px-6 py-3.5 border border-slate-700 text-slate-300 hover:text-white hover:border-gold rounded transition text-sm uppercase tracking-wider">
+                        </label>
+                        <label for="tab-radio-services" class="w-full sm:w-auto px-6 py-3.5 border border-slate-700 text-slate-300 hover:text-white hover:border-gold rounded transition text-sm uppercase tracking-wider text-center cursor-pointer">
                             View Practice Areas
-                        </button>
+                        </label>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- TAB 2: ABOUT -->
-        <div id="tab-about" class="tab-content">
+        <!-- PANEL 2: ABOUT -->
+        <div id="panel-about" class="tab-panel">
             <section class="py-12 sm:py-16 border-b border-slate-800/80">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
                     <div class="border-b border-slate-800 pb-6 sm:pb-8 space-y-3">
@@ -120,10 +148,10 @@
                         </div>
                         <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed pl-4 sm:pl-6 border-l-2 border-slate-800">
                             <p>
-                                Selemon Getachew is a senior financial risk expert and quantitative leader with over 20 years of experience building, validating, and leading risk management models across major banking institutions and trading floors. Formerly Senior Vice President of Market Risk Management at PNC and Vice President at Wells Fargo, Dr. Getachew has led institutional model risk validation, balance sheet analytics, and complex derivative pricing across interest rate, FX, commodity, credit, and mortgage-backed securities (MBS) markets.
+                                Selemon Getachew is a senior financial risk expert and quantitative leader with over 20 years of experience building, validating, and leading risk management models across major banking institutions and trading floors[cite: 1]. Formerly Senior Vice President of Market Risk Management at PNC and Vice President at Wells Fargo, Dr. Getachew has led institutional model risk validation, balance sheet analytics, and complex derivative pricing across interest rate, FX, commodity, credit, and mortgage-backed securities (MBS) markets[cite: 1].
                             </p>
                             <p class="text-slate-400 text-xs sm:text-sm">
-                                He holds a Doctorate (Ph.D.) in Mathematics from Brown University and completed his undergraduate studies at Dartmouth College with a B.A. in Mathematics, Computer Science, and Studio Art. This rigorous academic foundation underpins his ability to translate advanced mathematical principles directly into complex financial markets and regulatory capital frameworks.
+                                He holds a Doctorate (Ph.D.) in Mathematics from Brown University and completed his undergraduate studies at Dartmouth College with a B.A. in Mathematics, Computer Science, and Studio Art[cite: 1]. This rigorous academic foundation underpins his ability to translate advanced mathematical principles directly into complex financial markets and regulatory capital frameworks[cite: 1].
                             </p>
                         </div>
                     </section>
@@ -136,7 +164,7 @@
                         </div>
                         <div class="pl-4 sm:pl-6 border-l-2 border-slate-800">
                             <blockquote class="text-slate-300 text-sm sm:text-base italic border-l-2 border-gold pl-3 sm:pl-4 py-2 bg-navy-800/30 rounded-r-lg">
-                                "Bridging mathematical rigor with clear, intuitive executive communication—prioritizing return-on-attention, conceptual clarity, and timely deliverables."
+                                "Bridging mathematical rigor with clear, intuitive executive communication—prioritizing return-on-attention, conceptual clarity, and timely deliverables."[cite: 1]
                             </blockquote>
                         </div>
                     </section>
@@ -149,16 +177,16 @@
                         </div>
                         <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed pl-4 sm:pl-6 border-l-2 border-slate-800">
                             <p>
-                                Branna LLC operates with a dual-scope advisory strategy tailored to the specific regulatory and structural environments of its clients:
+                                Branna LLC operates with a dual-scope advisory strategy tailored to the specific regulatory and structural environments of its clients[cite: 1]:
                             </p>
                             <ul class="space-y-3 text-xs sm:text-sm text-slate-400 pt-1">
                                 <li class="flex items-start space-x-3">
                                     <span class="text-gold font-bold mt-0.5">❖</span>
-                                    <span><strong class="text-white">Developed Capital Markets:</strong> Institutional-grade quantitative modeling, regulatory stress testing (CCAR/DFAST), FRTB compliance, SA-CVA, and independent model validation (SR 11-7) for global financial institutions.</span>
+                                    <span><strong class="text-white">Developed Capital Markets:</strong> Institutional-grade quantitative modeling, regulatory stress testing (CCAR/DFAST), FRTB compliance, SA-CVA, and independent model validation (SR 11-7) for global financial institutions[cite: 1].</span>
                                 </li>
                                 <li class="flex items-start space-x-3">
                                     <span class="text-gold font-bold mt-0.5">❖</span>
-                                    <span><strong class="text-white">Frontier & Emerging Markets:</strong> High-impact capacity building, executive financial risk training, debt/cash-flow structuring, and pragmatic regulatory readiness tailored to developing banking sectors.</span>
+                                    <span><strong class="text-white">Frontier & Emerging Markets:</strong> High-impact capacity building, executive financial risk training, debt/cash-flow structuring, and pragmatic regulatory readiness tailored to developing banking sectors[cite: 1].</span>
                                 </li>
                             </ul>
                         </div>
@@ -167,27 +195,27 @@
             </section>
         </div>
 
-        <!-- TAB 3: SERVICES -->
-        <div id="tab-services" class="tab-content">
+        <!-- PANEL 3: SERVICES -->
+        <div id="panel-services" class="tab-panel">
             <section class="py-12 sm:py-16 bg-navy-900 border-b border-slate-800/80">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
                     <div class="text-center max-w-3xl mx-auto space-y-3">
                         <h2 class="text-xs uppercase tracking-widest text-gold font-semibold">Core Practice Areas</h2>
                         <p class="text-2xl sm:text-4xl font-bold text-white brand-font">Financial Risk Management Practice</p>
-                        <p class="text-slate-400 text-xs sm:text-sm">Institutional risk identification, quantitative measurement, and derivative hedging strategies tailored across global markets.</p>
+                        <p class="text-slate-400 text-xs sm:text-sm">Institutional risk identification, quantitative measurement, and derivative hedging strategies tailored across global markets[cite: 1].</p>
                     </div>
 
                     <div class="grid lg:grid-cols-2 gap-6 sm:gap-8">
                         <div class="bg-gradient-to-br from-navy-800 to-navy-900 p-6 sm:p-8 rounded-xl border border-slate-700/80 space-y-4">
                             <h3 class="text-lg sm:text-xl font-bold text-white brand-font tracking-wide">Developed Capital Markets</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Full-scale quantitative advisory for global financial institutions, including advanced model validation (SR 11-7), CCAR stress scenario testing, FRTB compliance, SA-CVA, and complex derivative pricing engines.
+                                Full-scale quantitative advisory for global financial institutions, including advanced model validation (SR 11-7), CCAR stress scenario testing, FRTB compliance, SA-CVA, and complex derivative pricing engines[cite: 1].
                             </p>
                         </div>
                         <div class="bg-gradient-to-br from-navy-800 to-navy-900 p-6 sm:p-8 rounded-xl border border-slate-700/80 space-y-4">
                             <h3 class="text-lg sm:text-xl font-bold text-white brand-font tracking-wide">Frontier Markets Solutions</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Practical solutions translating developed-market experience into emerging banking sectors: executive risk training, cash-flow structuring, custom financial models, and regulatory readiness.
+                                Practical solutions translating developed-market experience into emerging banking sectors: executive risk training, cash-flow structuring, custom financial models, and regulatory readiness[cite: 1].
                             </p>
                         </div>
                     </div>
@@ -195,8 +223,8 @@
             </section>
         </div>
 
-        <!-- TAB 4: CAPABILITIES -->
-        <div id="tab-specialization" class="tab-content">
+        <!-- PANEL 4: CAPABILITIES -->
+        <div id="panel-specialization" class="tab-panel">
             <section class="py-12 sm:py-16 bg-navy-800/40 border-b border-slate-800">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6">
                     <div class="mb-8 sm:mb-12">
@@ -206,23 +234,23 @@
                     <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
                         <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
                             <h4 class="text-base sm:text-lg font-bold text-white brand-font">Regulatory Compliance & Stress Testing</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">FRTB, Market Risk Rule, SA-CVA, CCAR/DFAST stress scenario modeling, and Basel capital frameworks.</p>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">FRTB, Market Risk Rule, SA-CVA, CCAR/DFAST stress scenario modeling, and Basel capital frameworks[cite: 1].</p>
                         </div>
                         <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
                             <h4 class="text-base sm:text-lg font-bold text-white brand-font">Asset Liability Management (ALM)</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Balance sheet management, deposit modeling, liquidity risk frameworks, and interest rate sensitivity analysis.</p>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Balance sheet management, deposit modeling, liquidity risk frameworks, and interest rate sensitivity analysis[cite: 1].</p>
                         </div>
                         <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
                             <h4 class="text-base sm:text-lg font-bold text-white brand-font">Fixed Income, MBS & Derivatives</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Valuation, term structure modeling, and hedging strategies for Mortgage-Backed Securities (MBS) and OTC derivatives.</p>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Valuation, term structure modeling, and hedging strategies for Mortgage-Backed Securities (MBS) and OTC derivatives[cite: 1].</p>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- TAB 5: CONTACT -->
-        <div id="tab-contact" class="tab-content">
+        <!-- PANEL 5: CONTACT -->
+        <div id="panel-contact" class="tab-panel">
             <section class="py-12 sm:py-16 bg-navy-900">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8">
                     <h2 class="text-xs uppercase tracking-widest text-gold font-semibold">Initiate an Engagement</h2>
@@ -243,66 +271,10 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="py-6 sm:py-8 bg-navy-900 border-t border-slate-800 text-center text-xs text-slate-500 px-4">
         <p>© 2026 Branna LLC | Quantitative Financial Risk Advisory | Reston, VA</p>
     </footer>
 
-    <!-- Mobile Drawer & Tab Switching JavaScript -->
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const hamburger = document.getElementById('hamburger-icon');
-            const close = document.getElementById('close-icon');
-
-            menu.classList.toggle('hidden');
-            hamburger.classList.toggle('hidden');
-            close.classList.toggle('hidden');
-        }
-
-        function switchTab(tabId) {
-            // Hide all tabs
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // Reset navigation link styles (desktop & mobile)
-            const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => btn.classList.remove('text-gold', 'font-semibold'));
-
-            const mobileNavButtons = document.querySelectorAll('.mobile-nav-btn');
-            mobileNavButtons.forEach(btn => {
-                btn.classList.remove('text-gold');
-                btn.classList.add('text-slate-300');
-            });
-
-            // Activate target tab
-            const activeTab = document.getElementById('tab-' + tabId);
-            if (activeTab) {
-                activeTab.classList.add('active');
-            }
-
-            // Highlight desktop nav button
-            const activeNav = document.getElementById('nav-' + tabId);
-            if (activeNav) {
-                activeNav.classList.add('text-gold', 'font-semibold');
-            }
-
-            // Highlight mobile nav button
-            const activeMobileNav = document.getElementById('mobile-nav-' + tabId);
-            if (activeMobileNav) {
-                activeMobileNav.classList.remove('text-slate-300');
-                activeMobileNav.classList.add('text-gold');
-            }
-
-            // Close mobile menu drawer if open
-            const menu = document.getElementById('mobile-menu');
-            if (!menu.classList.contains('hidden')) {
-                toggleMobileMenu();
-            }
-
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
 </body>
 </html>
