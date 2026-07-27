@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Branna LLC | Quantitative Financial Risk Advisory</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, h4, h5, .brand-font { font-family: 'Cinzel', serif; }
@@ -57,7 +57,7 @@
             </label>
 
             <!-- Desktop Links -->
-            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider text-slate-300">
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wider text-slate-300">
                 <label for="tab-radio-home" class="lbl-home cursor-pointer transition hover:text-gold">Home</label>
                 <label for="tab-radio-about" class="lbl-about cursor-pointer transition hover:text-gold">About</label>
                 <label for="tab-radio-services" class="lbl-services cursor-pointer transition hover:text-gold">Core Risk Practice</label>
@@ -81,14 +81,14 @@
             </label>
         </div>
 
-        <!-- Mobile Menu Drawer (Cascades vertically on phone screens) -->
+        <!-- Mobile Menu Drawer -->
         <div id="mobile-drawer" class="hidden md:hidden flex-col bg-navy-900 border-b border-slate-800 px-6 pt-4 pb-8 space-y-3">
-            <label for="tab-radio-home" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-home block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">Home</label>
-            <label for="tab-radio-about" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-about block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">About</label>
-            <label for="tab-radio-services" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-services block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">Core Risk Practice</label>
-            <label for="tab-radio-specialization" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-specialization block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">Capabilities</label>
-            <label for="tab-radio-contact" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-contact block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 uppercase tracking-wider cursor-pointer">Contact</label>
-            <label for="tab-radio-contact" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="block w-full mt-4 px-5 py-3 rounded border border-gold text-gold text-center font-medium text-sm uppercase tracking-wider cursor-pointer">
+            <label for="tab-radio-home" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-home block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">Home</label>
+            <label for="tab-radio-about" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-about block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">About</label>
+            <label for="tab-radio-services" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-services block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">Core Risk Practice</label>
+            <label for="tab-radio-specialization" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-specialization block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">Capabilities</label>
+            <label for="tab-radio-contact" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-contact block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">Contact</label>
+            <label for="tab-radio-contact" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="block w-full mt-4 px-5 py-3 rounded border border-gold text-gold text-center font-medium text-sm tracking-wider cursor-pointer">
                 Engage Advisory
             </label>
         </div>
@@ -99,34 +99,40 @@
 
         <!-- PANEL 1: LANDING PAGE / HOME -->
         <div id="panel-home" class="tab-panel">
-            <section class="relative bg-gradient-to-b from-navy-800 via-navy-900 to-navy-900 border-b border-slate-800/80 py-16 sm:py-28 md:py-36">
-                <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8">
-                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gold font-semibold px-3 py-1.5 rounded-full border border-gold/30 bg-gold/10 inline-block">
-                        Quantitative Financial Risk Advisory
-                    </span>
+            <section class="relative bg-gradient-to-b from-navy-800 via-navy-900 to-navy-900 py-20 sm:py-32 md:py-36 overflow-hidden">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-8 relative z-10">
+                    
+                    <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-gold/40 bg-gold/10 backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        <span class="text-xs font-semibold tracking-widest text-gold uppercase">Quantitative Advisory & Governance</span>
+                    </div>
+
+                    <!-- Updated Headline -->
                     <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight brand-font leading-tight">
-                        Precision Engineering for <br><span class="text-gold">Complex Capital Markets</span>
+                        Pragmatic Financial Risk Management <br>
+                        <span class="text-slate-400 font-normal italic text-xl sm:text-3xl md:text-4xl inline-block mt-2 font-sans lowercase">with</span> <span class="text-gold font-semibold text-2xl sm:text-4xl md:text-5xl inline-block">Precision</span>
                     </h1>
                     
-                    <p class="max-w-3xl mx-auto text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed font-normal">
-                        Branna LLC delivers elite quantitative risk management, model validation (SR 11-7), and regulatory compliance advisory. Bridging institutional-grade mathematical rigor with clear executive vision, we empower financial institutions and frontier markets to measure, navigate, and structure complex exposure with complete clarity.
+                    <p class="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed font-normal">
+                        Branna LLC delivers institutional-grade quantitative risk management, independent model validation (SR 11-7 / SR 26-2), and regulatory compliance advisory. Bridging deep analytical precision with executive clarity, we empower institutions to manage exposure with pragmatic focus.
                     </p>
 
-                    <div class="pt-4 sm:pt-6 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
-                        <label for="tab-radio-about" class="w-full sm:w-auto px-6 py-3.5 bg-gold text-navy-900 font-bold rounded hover:bg-yellow-500 transition text-sm uppercase tracking-wider text-center cursor-pointer">
-                            Explore About & Leadership
+                    <div class="pt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
+                        <label for="tab-radio-contact" class="w-full sm:w-auto px-8 py-4 bg-gold text-navy-900 font-bold rounded shadow-lg shadow-gold/10 hover:bg-yellow-500 transition text-sm uppercase tracking-wider text-center cursor-pointer">
+                            Engage Advisory Services
                         </label>
-                        <label for="tab-radio-services" class="w-full sm:w-auto px-6 py-3.5 border border-slate-700 text-slate-300 hover:text-white hover:border-gold rounded transition text-sm uppercase tracking-wider text-center cursor-pointer">
-                            View Practice Areas
+                        <label for="tab-radio-specialization" class="w-full sm:w-auto px-8 py-4 border border-slate-700 bg-navy-800/50 text-slate-200 hover:text-white hover:border-gold rounded transition text-sm uppercase tracking-wider text-center cursor-pointer">
+                            Explore Capabilities
                         </label>
                     </div>
+
                 </div>
             </section>
         </div>
 
         <!-- PANEL 2: ABOUT -->
         <div id="panel-about" class="tab-panel">
-            <section class="py-12 sm:py-16 border-b border-slate-800/80">
+            <section class="py-12 sm:py-16">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
                     <div class="border-b border-slate-800 pb-6 sm:pb-8 space-y-3">
                         <h1 class="text-xs uppercase tracking-widest text-gold font-semibold">About the Practice</h1>
@@ -148,10 +154,10 @@
                         </div>
                         <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed pl-4 sm:pl-6 border-l-2 border-slate-800">
                             <p>
-                                Selemon Getachew is a senior financial risk expert and quantitative leader with over 20 years of experience building, validating, and leading risk management models across major banking institutions and trading floors[cite: 1]. Formerly Senior Vice President of Market Risk Management at PNC and Vice President at Wells Fargo, Dr. Getachew has led institutional model risk validation, balance sheet analytics, and complex derivative pricing across interest rate, FX, commodity, credit, and mortgage-backed securities (MBS) markets[cite: 1].
+                                Selemon Getachew is a senior financial risk expert and quantitative leader with over 20 years of experience building, validating, and leading risk management models across major banking institutions and trading floors. Formerly Senior Vice President of Market Risk Management at PNC and Vice President at Wells Fargo, Dr. Getachew has led institutional model risk validation, balance sheet analytics, and complex derivative pricing across interest rate, FX, commodity, credit, and mortgage-backed securities (MBS) markets.
                             </p>
                             <p class="text-slate-400 text-xs sm:text-sm">
-                                He holds a Doctorate (Ph.D.) in Mathematics from Brown University and completed his undergraduate studies at Dartmouth College with a B.A. in Mathematics, Computer Science, and Studio Art[cite: 1]. This rigorous academic foundation underpins his ability to translate advanced mathematical principles directly into complex financial markets and regulatory capital frameworks[cite: 1].
+                                He holds a Doctorate (Ph.D.) in Mathematics from Brown University and completed his undergraduate studies at Dartmouth College with a B.A. in Mathematics, Computer Science, and Studio Art. This rigorous academic foundation underpins his ability to translate advanced mathematical principles directly into complex financial markets and regulatory capital frameworks.
                             </p>
                         </div>
                     </section>
@@ -164,31 +170,8 @@
                         </div>
                         <div class="pl-4 sm:pl-6 border-l-2 border-slate-800">
                             <blockquote class="text-slate-300 text-sm sm:text-base italic border-l-2 border-gold pl-3 sm:pl-4 py-2 bg-navy-800/30 rounded-r-lg">
-                                "Bridging mathematical rigor with clear, intuitive executive communication—prioritizing return-on-attention, conceptual clarity, and timely deliverables."[cite: 1]
+                                "Bridging mathematical rigor with clear, intuitive executive communication—prioritizing return-on-attention, conceptual clarity, and timely deliverables."
                             </blockquote>
-                        </div>
-                    </section>
-
-                    <!-- Part 3: Tailored Strategy -->
-                    <section class="space-y-4">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-gold text-xs shadow-[0_0_8px_rgba(212,175,55,0.6)] rounded-sm p-0.5">◆</span>
-                            <h3 class="text-lg sm:text-xl font-bold text-white brand-font">Tailored Strategy</h3>
-                        </div>
-                        <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed pl-4 sm:pl-6 border-l-2 border-slate-800">
-                            <p>
-                                Branna LLC operates with a dual-scope advisory strategy tailored to the specific regulatory and structural environments of its clients[cite: 1]:
-                            </p>
-                            <ul class="space-y-3 text-xs sm:text-sm text-slate-400 pt-1">
-                                <li class="flex items-start space-x-3">
-                                    <span class="text-gold font-bold mt-0.5">❖</span>
-                                    <span><strong class="text-white">Developed Capital Markets:</strong> Institutional-grade quantitative modeling, regulatory stress testing (CCAR/DFAST), FRTB compliance, SA-CVA, and independent model validation (SR 11-7) for global financial institutions[cite: 1].</span>
-                                </li>
-                                <li class="flex items-start space-x-3">
-                                    <span class="text-gold font-bold mt-0.5">❖</span>
-                                    <span><strong class="text-white">Frontier & Emerging Markets:</strong> High-impact capacity building, executive financial risk training, debt/cash-flow structuring, and pragmatic regulatory readiness tailored to developing banking sectors[cite: 1].</span>
-                                </li>
-                            </ul>
                         </div>
                     </section>
                 </div>
@@ -197,25 +180,25 @@
 
         <!-- PANEL 3: SERVICES -->
         <div id="panel-services" class="tab-panel">
-            <section class="py-12 sm:py-16 bg-navy-900 border-b border-slate-800/80">
+            <section class="py-12 sm:py-16 bg-navy-900">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
                     <div class="text-center max-w-3xl mx-auto space-y-3">
                         <h2 class="text-xs uppercase tracking-widest text-gold font-semibold">Core Practice Areas</h2>
                         <p class="text-2xl sm:text-4xl font-bold text-white brand-font">Financial Risk Management Practice</p>
-                        <p class="text-slate-400 text-xs sm:text-sm">Institutional risk identification, quantitative measurement, and derivative hedging strategies tailored across global markets[cite: 1].</p>
+                        <p class="text-slate-400 text-xs sm:text-sm">Institutional risk identification, quantitative measurement, and derivative hedging strategies tailored across global financial institutions.</p>
                     </div>
 
-                    <div class="grid lg:grid-cols-2 gap-6 sm:gap-8">
+                    <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
                         <div class="bg-gradient-to-br from-navy-800 to-navy-900 p-6 sm:p-8 rounded-xl border border-slate-700/80 space-y-4">
-                            <h3 class="text-lg sm:text-xl font-bold text-white brand-font tracking-wide">Developed Capital Markets</h3>
+                            <h3 class="text-lg sm:text-xl font-bold text-white brand-font tracking-wide">Quantitative Model Advisory</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Full-scale quantitative advisory for global financial institutions, including advanced model validation (SR 11-7), CCAR stress scenario testing, FRTB compliance, SA-CVA, and complex derivative pricing engines[cite: 1].
+                                Full-scale quantitative advisory for banking and market institutions, including advanced model validation (SR 11-7 / SR 26-2), CCAR stress scenario testing, FRTB compliance, SA-CVA, and custom derivative pricing engines.
                             </p>
                         </div>
                         <div class="bg-gradient-to-br from-navy-800 to-navy-900 p-6 sm:p-8 rounded-xl border border-slate-700/80 space-y-4">
-                            <h3 class="text-lg sm:text-xl font-bold text-white brand-font tracking-wide">Frontier Markets Solutions</h3>
+                            <h3 class="text-lg sm:text-xl font-bold text-white brand-font tracking-wide">Capacity & Regulatory Solutions</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Practical solutions translating developed-market experience into emerging banking sectors: executive risk training, cash-flow structuring, custom financial models, and regulatory readiness[cite: 1].
+                                Strategic capacity building, executive financial risk training, structured debt/cash-flow models, and pragmatic regulatory readiness tailored to evolving supervisory expectations.
                             </p>
                         </div>
                     </div>
@@ -225,24 +208,32 @@
 
         <!-- PANEL 4: CAPABILITIES -->
         <div id="panel-specialization" class="tab-panel">
-            <section class="py-12 sm:py-16 bg-navy-800/40 border-b border-slate-800">
+            <section class="py-12 sm:py-16 bg-navy-800/40">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6">
                     <div class="mb-8 sm:mb-12">
                         <h2 class="text-xs uppercase tracking-widest text-gold font-semibold">Specialized Expertise</h2>
                         <p class="text-2xl sm:text-3xl font-bold text-white mt-2 brand-font">Strategic Capabilities</p>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                        <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
+                            <h4 class="text-base sm:text-lg font-bold text-white brand-font">Market Risk Management</h4>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Quantifying, modeling, and managing exposure across Interest Rate Risk, Foreign Exchange (FX), Commodity Price Risk, Counterparty Credit Risk, Value-at-Risk (VaR), Expected Shortfall (ES), Potential Future Exposure (PFE), Credit Value Adjustment (CVA), and Interest Rate Risk (IRR).</p>
+                        </div>
+                        <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
+                            <h4 class="text-base sm:text-lg font-bold text-white brand-font">Model Risk Management</h4>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Independent model validation (SR 11-7 / SR 26-2), conceptual soundness reviews, quantitative benchmarking, and governance frameworks across trading and banking book models.</p>
+                        </div>
                         <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
                             <h4 class="text-base sm:text-lg font-bold text-white brand-font">Regulatory Compliance & Stress Testing</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">FRTB, Market Risk Rule, SA-CVA, CCAR/DFAST stress scenario modeling, and Basel capital frameworks[cite: 1].</p>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Regulatory capital (FRTB, Market Risk Rule), CVA Capital, Risk-Weighted Assets, CCAR stress scenarios, and Basel capital frameworks.</p>
                         </div>
                         <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
                             <h4 class="text-base sm:text-lg font-bold text-white brand-font">Asset Liability Management (ALM)</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Balance sheet management, deposit modeling, liquidity risk frameworks, and interest rate sensitivity analysis[cite: 1].</p>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Balance sheet management, deposit modeling, liquidity risk frameworks, and interest rate sensitivity analysis.</p>
                         </div>
                         <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
-                            <h4 class="text-base sm:text-lg font-bold text-white brand-font">Fixed Income, MBS & Derivatives</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Valuation, term structure modeling, and hedging strategies for Mortgage-Backed Securities (MBS) and OTC derivatives[cite: 1].</p>
+                            <h4 class="text-base sm:text-lg font-bold text-white brand-font">Derivatives & Structured Products</h4>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Valuation, term structure modeling, hedging, and cash-flow replication and approximation for derivatives and fixed income instruments.</p>
                         </div>
                     </div>
                 </div>
@@ -254,7 +245,8 @@
             <section class="py-12 sm:py-16 bg-navy-900">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8">
                     <h2 class="text-xs uppercase tracking-widest text-gold font-semibold">Initiate an Engagement</h2>
-                    <h3 class="text-2xl sm:text-4xl font-bold text-white brand-font">Ready to Strengthen Your Quantitative Infrastructure?</h3>
+                    <!-- Updated Contact Headline -->
+                    <h3 class="text-2xl sm:text-4xl font-bold text-white brand-font">Need Financial Risk and Quantitative Model Solutions?</h3>
                     <form class="text-left space-y-4 sm:space-y-6 pt-4">
                         <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
                             <input type="text" class="w-full bg-navy-800 border border-slate-700 rounded px-4 py-3 text-white focus:outline-none focus:border-gold text-sm" placeholder="Name">
@@ -270,11 +262,6 @@
         </div>
 
     </main>
-
-    <!-- FOOTER -->
-    <footer class="py-6 sm:py-8 bg-navy-900 border-t border-slate-800 text-center text-xs text-slate-500 px-4">
-        <p>© 2026 Branna LLC | Quantitative Financial Risk Advisory | Reston, VA</p>
-    </footer>
 
 </body>
 </html>
