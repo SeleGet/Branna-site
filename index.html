@@ -1,313 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Branna LLC | Quantitative Financial Risk Advisory</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, h4, h5, .brand-font { font-family: 'Cinzel', serif; }
-        .bg-navy-900 { background-color: #0B132B; }
-        .bg-navy-800 { background-color: #1C2541; }
-        .text-gold { color: #D4AF37; }
-        .bg-gold { background-color: #D4AF37; }
-        .border-gold { border-color: #D4AF37; }
-
-        /* CSS-ONLY TAB CONTROL */
-        .tab-panel { display: none; }
-        
-        #tab-radio-home:checked ~ main #panel-home { display: block; }
-        #tab-radio-about:checked ~ main #panel-about { display: block; }
-        #tab-radio-services:checked ~ main #panel-services { display: block; }
-        #tab-radio-specialization:checked ~ main #panel-specialization { display: block; }
-        #tab-radio-contact:checked ~ main #panel-contact { display: block; }
-
-        /* ACTIVE TAB LINK HIGHLIGHTING */
-        #tab-radio-home:checked ~ nav .lbl-home { color: #D4AF37; font-weight: 600; }
-        #tab-radio-about:checked ~ nav .lbl-about { color: #D4AF37; font-weight: 600; }
-        #tab-radio-services:checked ~ nav .lbl-services { color: #D4AF37; font-weight: 600; }
-        #tab-radio-specialization:checked ~ nav .lbl-specialization { color: #D4AF37; font-weight: 600; }
-        #tab-radio-contact:checked ~ nav .lbl-contact { color: #D4AF37; font-weight: 600; }
-
-        /* PURE CSS MOBILE MENU DRAWER TOGGLE */
-        #mobile-menu-toggle:checked ~ nav #mobile-drawer { display: flex; }
-        #mobile-menu-toggle:checked ~ nav #icon-hamburger { display: none; }
-        #mobile-menu-toggle:checked ~ nav #icon-close { display: block; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Branna LLC | Quantitative Financial Risk Advisory — Copy Update Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=EB+Garamond:ital@1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          gold: '#D4AF37',
+          'navy-900': '#0B132B',
+          'navy-800': '#111A38',
+          'navy-700': '#182347'
+        },
+        fontFamily: {
+          serif: ['Cinzel', 'serif'],
+          sans: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  h1, h2, .font-serif { font-family: 'Cinzel', serif; }
+  .nav-link.active { color: #D4AF37; }
+  ::selection { background: #D4AF37; color: #0B132B; }
+</style>
 </head>
-<body class="bg-navy-900 text-gray-200 antialiased selection:bg-gold selection:text-navy-900 min-h-screen flex flex-col justify-between">
+<body class="bg-navy-900 text-gray-200 antialiased min-h-screen">
 
-    <!-- HIDDEN CONTROLLERS (Pure CSS Logic) -->
-    <input type="radio" name="tab-controller" id="tab-radio-home" class="hidden" checked>
-    <input type="radio" name="tab-controller" id="tab-radio-about" class="hidden">
-    <input type="radio" name="tab-controller" id="tab-radio-services" class="hidden">
-    <input type="radio" name="tab-controller" id="tab-radio-specialization" class="hidden">
-    <input type="radio" name="tab-controller" id="tab-radio-contact" class="hidden">
-    <input type="checkbox" id="mobile-menu-toggle" class="hidden">
+<!-- ============ NAV (unchanged from live site) ============ -->
+<header class="sticky top-0 z-50 bg-navy-900/95 backdrop-blur border-b border-white/5">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
+    <a href="#home" class="font-serif font-bold text-lg tracking-wide text-white">
+      BRAN<span class="text-gold text-sm align-super italic" style="font-family: 'EB Garamond', serif;">n</span>A
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
+      <a href="#home" class="nav-link active hover:text-gold transition">Home</a>
+      <a href="#about" class="nav-link hover:text-gold transition">About</a>
+      <a href="#services" class="nav-link hover:text-gold transition">Services</a>
+      <a href="#capabilities" class="nav-link hover:text-gold transition">Capabilities</a>
+      <a href="#contact" class="nav-link hover:text-gold transition">Contact</a>
+    </div>
+    <a href="#contact" class="border border-gold text-gold text-xs sm:text-sm font-semibold tracking-wider uppercase px-4 sm:px-5 py-2.5 rounded hover:bg-gold hover:text-navy-900 transition">
+      Start an Engagement
+    </a>
+  </nav>
+</header>
 
-    <!-- GLOBAL NAVIGATION -->
-    <nav class="fixed w-full z-50 bg-navy-900/95 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex justify-between items-center">
-            
-            <!-- Custom Branna Logo Mark with Fine-Tuned Superscript & Letter Spacing -->
-            <label for="tab-radio-home" class="cursor-pointer flex items-center">
-                <svg class="h-9 sm:h-11 w-auto" viewBox="0 0 350 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <text x="0" y="58" fill="#FFFFFF" style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 40px; letter-spacing: 1px;">
-                        BRAN<tspan fill="#D4AF37" font-family="'EB Garamond', 'Georgia', serif" font-style="italic" font-weight="600" font-size="0.85em" dx="1" dy="-18">n</tspan><tspan fill="#FFFFFF" dx="-2" dy="18">A</tspan>
-                    </text>
-                </svg>
-            </label>
+<!-- ============ HERO — updated copy ============ -->
+<section id="home" class="px-6 pt-24 pb-28 text-center">
+  <div class="max-w-4xl mx-auto">
+    <span class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-gold uppercase border border-gold/40 rounded-full px-4 py-2 mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+      Quantitative Advisory &amp; Model Risk Governance
+    </span>
 
-            <!-- Desktop Links -->
-            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wider text-slate-300">
-                <label for="tab-radio-home" class="lbl-home cursor-pointer transition hover:text-gold">Home</label>
-                <label for="tab-radio-about" class="lbl-about cursor-pointer transition hover:text-gold">About</label>
-                <label for="tab-radio-services" class="lbl-services cursor-pointer transition hover:text-gold">Services</label>
-                <label for="tab-radio-specialization" class="lbl-specialization cursor-pointer transition hover:text-gold">Capabilities</label>
-                <label for="tab-radio-contact" class="lbl-contact cursor-pointer transition hover:text-gold">Contact</label>
-            </div>
+    <h1 class="font-serif font-extrabold text-4xl sm:text-5xl md:text-6xl leading-tight text-white mb-6">
+      <span class="text-gold">Precision</span> Meets <span class="text-gold">Pragmatism</span>.
+    </h1>
 
-            <!-- Desktop CTA -->
-            <label for="tab-radio-contact" class="hidden md:inline-block px-5 py-2.5 rounded border border-gold text-gold hover:bg-gold hover:text-navy-900 transition font-medium text-sm cursor-pointer">
-                Engage Advisory
-            </label>
+    <h2 class="font-sans font-normal italic text-lg sm:text-xl text-slate-400 mb-6">
+      Tailored advisory for developed and frontier markets alike.
+    </h2>
 
-            <!-- Mobile Hamburger Button -->
-            <label for="mobile-menu-toggle" class="md:hidden p-2 text-slate-300 hover:text-gold cursor-pointer">
-                <svg id="icon-hamburger" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-                <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </label>
-        </div>
+    <p class="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed mb-10">
+      Branna LLC is the independent practice of Selemon Getachew, Ph.D., drawing on twenty-five years managing market and counterparty risk model lifecycles at Tier-1 financial institutions. The practice delivers quantitative risk management, financial modeling, independent model validation, regulatory compliance advisory, and risk management training.
+    </p>
 
-        <!-- Mobile Menu Drawer -->
-        <div id="mobile-drawer" class="hidden md:hidden flex-col bg-navy-900 border-b border-slate-800 px-6 pt-4 pb-8 space-y-3">
-            <label for="tab-radio-home" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-home block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">Home</label>
-            <label for="tab-radio-about" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-about block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">About</label>
-            <label for="tab-radio-services" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-services block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">Services</label>
-            <label for="tab-radio-specialization" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-specialization block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">Capabilities</label>
-            <label for="tab-radio-contact" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="lbl-contact block w-full py-3 text-base font-medium text-slate-300 border-b border-slate-800/60 cursor-pointer">Contact</label>
-            <label for="tab-radio-contact" onclick="document.getElementById('mobile-menu-toggle').checked=false" class="block w-full mt-4 px-5 py-3 rounded border border-gold text-gold text-center font-medium text-sm tracking-wider cursor-pointer">
-                Engage Advisory
-            </label>
-        </div>
-    </nav>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#contact" class="w-full sm:w-auto bg-gold text-navy-900 font-bold text-sm uppercase tracking-wider px-8 py-3.5 rounded hover:bg-yellow-500 transition">
+        Start a Conversation
+      </a>
+      <a href="#about" class="w-full sm:w-auto border border-white/20 text-white font-semibold text-sm uppercase tracking-wider px-8 py-3.5 rounded hover:border-gold hover:text-gold transition">
+        See the Track Record
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- MAIN PANELS CONTAINER -->
-    <main class="pt-20 flex-grow">
+<!-- ============ ABOUT — updated copy ============ -->
+<section id="about" class="px-6 py-24 border-t border-white/5">
+  <div class="max-w-4xl mx-auto">
+    <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">About the Practice</p>
+    <h2 class="font-serif font-bold text-3xl sm:text-4xl text-white mb-1">Selemon Getachew, Ph.D.</h2>
+    <p class="text-slate-400 text-lg mb-8">Principal &amp; Quantitative Lead</p>
+    <hr class="border-white/10 mb-10" />
 
-        <!-- PANEL 1: LANDING PAGE / HOME -->
-        <div id="panel-home" class="tab-panel">
-            <section class="relative bg-gradient-to-b from-navy-800 via-navy-900 to-navy-900 py-20 sm:py-32 md:py-36 overflow-hidden">
-                <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-8 relative z-10">
-                    
-                    <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-gold/40 bg-gold/10 backdrop-blur-sm">
-                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-                        <span class="text-xs font-semibold tracking-widest text-gold uppercase">Quantitative Advisory & Governance</span>
-                    </div>
+    <div class="mb-10">
+      <h3 class="flex items-center gap-2 font-serif font-bold text-xl text-white mb-4">
+        <span class="text-gold">&#9670;</span> Biography &amp; Executive Background
+      </h3>
+      <p class="text-slate-300 leading-relaxed mb-4">
+        Selemon Getachew spent twenty-five years inside market and counterparty risk at three institutions examiners take seriously &mdash; Fannie Mae, Wells Fargo, and PNC &mdash; before founding Branna LLC in 2026.
+      </p>
+      <p class="text-slate-300 leading-relaxed mb-4">
+        At PNC, he served as the bank&rsquo;s primary senior quantitative authority for market risk and acted as interim leader of the Market Risk Analytics group for more than a year. He was the senior-most quant responsible for the full model lifecycle of PNC&rsquo;s enterprise Potential Future Exposure (PFE) engine &mdash; covering every OTC derivative transaction on the bank&rsquo;s books &mdash; leading all updates, fixes, enhancements, governance, audit remediation, and regulatory defense.
+      </p>
+      <p class="text-slate-400 leading-relaxed mb-4">
+        Earlier, as VP and Model Validation Co-Lead at PNC and Model Validation Manager at Wells Fargo, he ran independent validation programs spanning VaR, Economic Capital, CVA, CCAR stress models, and interest rate, FX, commodity, and credit derivatives. Before that, he built valuation and sensitivity models for fixed income and interest rate derivatives at Fannie Mae and AIG Trading Group.
+      </p>
+      <p class="text-slate-400 leading-relaxed">
+        He holds a Ph.D. in Mathematics from Brown University and a B.A. in Mathematics, Computer Science, and Studio Art from Dartmouth College, where he graduated magna cum laude and was elected to Phi Beta Kappa.
+      </p>
+    </div>
 
-                    <!-- Headline -->
-                    <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight brand-font leading-tight">
-                        Pragmatic Financial Risk Management <br>
-                        <span class="text-slate-400 font-normal italic text-xl sm:text-3xl md:text-4xl inline-block mt-2 font-sans lowercase">with</span> <span class="text-gold font-semibold text-2xl sm:text-4xl md:text-5xl inline-block">Precision</span>
-                    </h1>
-                    
-                    <p class="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed font-normal">
-                        Branna delivers institutional-grade quantitative risk management, financial models, independent model validation, regulatory compliance advisory, and financial risk management training. Bridging rigor with pragmatism, it empowers institutions in developed and frontier markets to manage financial risk.
-                    </p>
+    <blockquote class="border-l-2 border-gold pl-6 my-10 italic text-slate-200 text-lg leading-relaxed">
+      &ldquo;Bridging mathematical rigor with clear, intuitive communication&mdash;prioritizing return-on-attention, conceptual clarity, and timely deliverables.&rdquo;
+    </blockquote>
 
-                    <div class="pt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
-                        <label for="tab-radio-contact" class="w-full sm:w-auto px-8 py-4 bg-gold text-navy-900 font-bold rounded shadow-lg shadow-gold/10 hover:bg-yellow-500 transition text-sm uppercase tracking-wider text-center cursor-pointer">
-                            Engage Advisory Services
-                        </label>
-                        <label for="tab-radio-specialization" class="w-full sm:w-auto px-8 py-4 border border-slate-700 bg-navy-800/50 text-slate-200 hover:text-white hover:border-gold rounded transition text-sm uppercase tracking-wider text-center cursor-pointer">
-                            Explore Capabilities
-                        </label>
-                    </div>
+    <div>
+      <h3 class="flex items-center gap-2 font-serif font-bold text-xl text-white mb-4">
+        <span class="text-gold">&#9670;</span> Developed &amp; Frontier Markets
+      </h3>
+      <p class="text-slate-300 leading-relaxed">
+        A second focus of the practice: adapting the same discipline used at Tier-1 U.S. banks for institutions in frontier markets that are building risk infrastructure for the first time. Developed-market engagements call for precision &mdash; deep validation and stress-testing rigor measured against an established rulebook. Frontier-market engagements call for pragmatism &mdash; building sound risk frameworks and capability where the ideal systems, data, and infrastructure aren&rsquo;t yet in place, and prioritizing what actually moves an institution forward. Branna moves between both without diluting either.
+      </p>
+    </div>
+  </div>
+</section>
 
-                </div>
-            </section>
-        </div>
+<!-- ============ SERVICES — updated copy ============ -->
+<section id="services" class="px-6 py-24 border-t border-white/5">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">Core Practice Areas</p>
+    <h2 class="font-serif font-bold text-3xl sm:text-4xl text-white mb-4">Advisory &amp; Capacity Services</h2>
+    <p class="max-w-2xl mx-auto text-slate-400 mb-14">
+      Tailored quantitative solutions designed to meet the distinct operational and regulatory environments of global financial markets.
+    </p>
 
-        <!-- PANEL 2: ABOUT -->
-        <div id="panel-about" class="tab-panel">
-            <section class="py-12 sm:py-16">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
-                    <div class="border-b border-slate-800 pb-6 sm:pb-8 space-y-3">
-                        <h1 class="text-xs uppercase tracking-widest text-gold font-semibold">About the Practice</h1>
-                        <div class="space-y-1">
-                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-white tracking-wide brand-font">
-                                Selemon Getachew, Ph.D. <span class="text-gold font-normal">.</span>
-                            </h2>
-                            <p class="text-slate-400 text-sm sm:text-base md:text-lg font-normal tracking-wide">
-                                Principal & Quantitative Lead
-                            </p>
-                        </div>
-                    </div>
+    <div class="grid md:grid-cols-2 gap-6 text-left">
+      <div class="border border-white/10 rounded-lg p-8 hover:border-gold/40 transition">
+        <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-2">Developed Markets</p>
+        <h3 class="font-serif font-bold text-xl text-white mb-4">Quantitative Model Advisory</h3>
+        <p class="text-slate-300 leading-relaxed mb-6">
+          Independent validation and advisory for banking and market-risk models, drawing on direct experience running the full lifecycle of an enterprise PFE engine and defending it through formal regulatory exams. Engagements cover model risk governance, CCAR stress-model review, FRTB and SA-CVA implementation support, and custom derivative pricing engine design and testing.
+        </p>
+        <hr class="border-white/10 mb-4" />
+        <p class="text-sm text-slate-400"><span class="text-gold font-semibold">Focus:</span> Model Risk Governance, Regulatory Exam Defense &amp; Derivatives Modeling</p>
+      </div>
 
-                    <!-- Part 1: Bio -->
-                    <section class="space-y-4">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-gold text-xs shadow-[0_0_8px_rgba(212,175,55,0.6)] rounded-sm p-0.5">◆</span>
-                            <h3 class="text-lg sm:text-xl font-bold text-white brand-font">Biography & Executive Background</h3>
-                        </div>
-                        <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed pl-4 sm:pl-6 border-l-2 border-slate-800">
-                            <p>
-                                Selemon Getachew is a senior financial risk expert and quantitative leader with over 20 years of experience building, validating, and leading risk management models across major banking institutions and trading floors. Formerly Senior Vice President of Market Risk Management at PNC and Vice President at Wells Fargo, Dr. Getachew has led institutional model risk validation, balance sheet analytics, and complex derivative pricing across interest rate, FX, commodity, credit, and mortgage-backed securities (MBS) markets.
-                            </p>
-                            <p class="text-slate-400 text-xs sm:text-sm">
-                                He holds a Doctorate (Ph.D.) in Mathematics from Brown University and completed his undergraduate studies at Dartmouth College with a B.A. in Mathematics, Computer Science, and Studio Art. This rigorous academic foundation underpins his ability to translate advanced mathematical principles directly into complex financial markets and regulatory capital frameworks.
-                            </p>
-                        </div>
-                    </section>
+      <div class="border border-white/10 rounded-lg p-8 hover:border-gold/40 transition">
+        <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-2">Frontier Markets</p>
+        <h3 class="font-serif font-bold text-xl text-white mb-4">Capacity &amp; Regulatory Solutions</h3>
+        <p class="text-slate-300 leading-relaxed mb-6">
+          Risk-management capacity building for institutions establishing or maturing their model risk and market risk functions: structured debt and cash-flow modeling, staff training, and regulatory-readiness programs built from the same frameworks used at Tier-1 U.S. banks, scaled to what a frontier-market institution can realistically run.
+        </p>
+        <hr class="border-white/10 mb-4" />
+        <p class="text-sm text-slate-400"><span class="text-gold font-semibold">Focus:</span> Institutional Readiness, Risk Framework Design &amp; Team Training</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                    <!-- Part 2: Bridging Developed & Frontier Markets -->
-                    <section class="space-y-4">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-gold text-xs shadow-[0_0_8px_rgba(212,175,55,0.6)] rounded-sm p-0.5">◆</span>
-                            <h3 class="text-lg sm:text-xl font-bold text-white brand-font">Bridging Developed & Frontier Markets</h3>
-                        </div>
-                        <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed pl-4 sm:pl-6 border-l-2 border-slate-800">
-                            <p>
-                                A core pillar of Branna LLC is adapting Wall Street-grade quantitative frameworks for rapidly evolving financial institutions globally. While developed markets require deep regulatory compliance and advanced stress-testing methodologies, frontier economies require scalable, pragmatic risk management structures designed for emerging capital markets.
-                            </p>
-                            <p class="text-slate-400 text-xs sm:text-sm">
-                                By translating high-level quantitative models into localized, operationally viable practices, we enable institutions in emerging economies to establish robust risk governance, improve sovereign and credit risk assessment, and attract international capital confidence.
-                            </p>
-                        </div>
-                    </section>
+<!-- ============ CAPABILITIES — preserved as on live site ============ -->
+<section id="capabilities" class="px-6 py-24 border-t border-white/5">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">Specialized Expertise</p>
+    <h2 class="font-serif font-bold text-3xl sm:text-4xl text-white mb-14">Strategic Capabilities</h2>
 
-                    <!-- Part 3: Balanced Philosophy -->
-                    <section class="space-y-4">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-gold text-xs shadow-[0_0_8px_rgba(212,175,55,0.6)] rounded-sm p-0.5">◆</span>
-                            <h3 class="text-lg sm:text-xl font-bold text-white brand-font">Balanced Philosophy</h3>
-                        </div>
-                        <div class="pl-4 sm:pl-6 border-l-2 border-slate-800">
-                            <blockquote class="text-slate-300 text-sm sm:text-base italic border-l-2 border-gold pl-3 sm:pl-4 py-2 bg-navy-800/30 rounded-r-lg">
-                                "Bridging mathematical rigor with clear, intuitive communication—prioritizing return-on-attention, conceptual clarity, and timely deliverables."
-                            </blockquote>
-                        </div>
-                    </section>
-                </div>
-            </section>
-        </div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-10">
+      <div class="border-l-2 border-gold pl-5">
+        <h3 class="font-serif font-bold text-white mb-2">Market Risk Management</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Quantifying, modeling, and managing exposure across Interest Rate Risk, Foreign Exchange (FX), Commodity Price Risk, Counterparty Credit Risk, Value-at-Risk (VaR), Expected Shortfall (ES), Potential Future Exposure (PFE), Credit Value Adjustment (CVA), and Interest Rate Risk (IRR).</p>
+      </div>
+      <div class="border-l-2 border-gold pl-5">
+        <h3 class="font-serif font-bold text-white mb-2">Model Risk Management</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Independent model validation, conceptual soundness reviews, quantitative benchmarking, and governance frameworks across trading and banking book models.</p>
+      </div>
+      <div class="border-l-2 border-gold pl-5">
+        <h3 class="font-serif font-bold text-white mb-2">Regulatory Compliance &amp; Stress Testing</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Regulatory capital (FRTB, Market Risk Rule), CVA Capital, Risk-Weighted Assets, CCAR stress scenarios, and Basel capital frameworks.</p>
+      </div>
+      <div class="border-l-2 border-gold pl-5">
+        <h3 class="font-serif font-bold text-white mb-2">Asset Liability Management (ALM)</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Balance sheet management, deposit modeling, liquidity risk frameworks, and interest rate sensitivity analysis.</p>
+      </div>
+      <div class="border-l-2 border-gold pl-5">
+        <h3 class="font-serif font-bold text-white mb-2">Derivatives &amp; Structured Products</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Valuation, term structure modeling, hedging, and cash-flow replication and approximation for derivatives and fixed income instruments.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- PANEL 3: SERVICES -->
-        <div id="panel-services" class="tab-panel">
-            <section class="py-12 sm:py-16 bg-navy-900">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
-                    <div class="text-center max-w-3xl mx-auto space-y-3">
-                        <h2 class="text-xs uppercase tracking-widest text-gold font-semibold">Core Practice Areas</h2>
-                        <p class="text-2xl sm:text-4xl font-bold text-white brand-font">Advisory & Capacity Services</p>
-                        <p class="text-slate-400 text-xs sm:text-sm">Tailored quantitative solutions designed to meet the distinct operational and regulatory environments of global financial markets.</p>
-                    </div>
+<!-- ============ CONTACT — preserved, email made consistent with resume ============ -->
+<section id="contact" class="px-6 py-24 border-t border-white/5">
+  <div class="max-w-2xl mx-auto text-center">
+    <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">Initiate an Engagement</p>
+    <h2 class="font-serif font-bold text-3xl sm:text-4xl text-white mb-12 leading-snug">
+      Discuss Your Risk Advisory Needs
+    </h2>
 
-                    <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
-                        
-                        <!-- Developed Markets Block -->
-                        <div class="bg-gradient-to-br from-navy-800 to-navy-900 p-8 sm:p-10 rounded-xl border border-slate-700/80 hover:border-gold/50 transition-all shadow-lg flex flex-col justify-between space-y-6">
-                            <div class="space-y-5">
-                                <div class="border-b border-slate-800 pb-3">
-                                    <span class="text-gold text-xs sm:text-sm font-semibold tracking-wider uppercase block">Developed Markets</span>
-                                    <h3 class="text-xl sm:text-2xl font-bold text-white brand-font mt-1">Quantitative Model Advisory</h3>
-                                </div>
-                                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                                    Full-scale quantitative advisory for banking and market institutions, including advanced model validation, CCAR stress scenario testing, FRTB compliance, SA-CVA, and custom derivative pricing engines.
-                                </p>
-                            </div>
-                            <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
-                                <span class="text-gold font-medium">Focus:</span> Model Risk Governance, Regulatory Compliance & Complex Derivatives
-                            </div>
-                        </div>
+    <form class="text-left space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input type="text" placeholder="Name" class="w-full bg-navy-800 border border-white/10 rounded px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-gold" />
+        <input type="text" placeholder="Organization" class="w-full bg-navy-800 border border-white/10 rounded px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-gold" />
+      </div>
+      <textarea placeholder="Message / Details of your requirement..." rows="5" class="w-full bg-navy-800 border border-white/10 rounded px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-gold"></textarea>
+      <button type="submit" class="w-full py-3.5 bg-gold text-navy-900 font-bold rounded hover:bg-yellow-500 transition text-sm uppercase tracking-wider">
+        Submit Advisory Request
+      </button>
+    </form>
 
-                        <!-- Frontier Markets Block -->
-                        <div class="bg-gradient-to-br from-navy-800 to-navy-900 p-8 sm:p-10 rounded-xl border border-slate-700/80 hover:border-gold/50 transition-all shadow-lg flex flex-col justify-between space-y-6">
-                            <div class="space-y-5">
-                                <div class="border-b border-slate-800 pb-3">
-                                    <span class="text-gold text-xs sm:text-sm font-semibold tracking-wider uppercase block">Frontier Markets</span>
-                                    <h3 class="text-xl sm:text-2xl font-bold text-white brand-font mt-1">Capacity & Regulatory Solutions</h3>
-                                </div>
-                                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                                    Strategic capacity building, financial risk training, structured debt and cash-flow models, and pragmatic regulatory readiness tailored to evolving supervisory expectations.
-                                </p>
-                            </div>
-                            <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
-                                <span class="text-gold font-medium">Focus:</span> Institutional Readiness, Risk Framework Architecture & Capability Building
-                            </div>
-                        </div>
+    <p class="text-slate-400 text-sm mt-6">
+      You can also email us directly at
+      <a href="mailto:selemon@branna-advisory.com" class="text-gold hover:underline font-semibold">selemon@branna-advisory.com</a>.
+    </p>
+  </div>
+</section>
 
-                    </div>
-                </div>
-            </section>
-        </div>
+<footer class="px-6 py-10 border-t border-white/5 text-center">
+  <p class="text-slate-500 text-xs">&copy; 2026 Branna LLC. Quantitative Risk &amp; Financial Advisory.</p>
+</footer>
 
-        <!-- PANEL 4: CAPABILITIES -->
-        <div id="panel-specialization" class="tab-panel">
-            <section class="py-12 sm:py-16 bg-navy-800/40">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6">
-                    <div class="mb-8 sm:mb-12">
-                        <h2 class="text-xs uppercase tracking-widest text-gold font-semibold">Specialized Expertise</h2>
-                        <p class="text-2xl sm:text-3xl font-bold text-white mt-2 brand-font">Strategic Capabilities</p>
-                    </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                        <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
-                            <h4 class="text-base sm:text-lg font-bold text-white brand-font">Market Risk Management</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Quantifying, modeling, and managing exposure across Interest Rate Risk, Foreign Exchange (FX), Commodity Price Risk, Counterparty Credit Risk, Value-at-Risk (VaR), Expected Shortfall (ES), Potential Future Exposure (PFE), Credit Value Adjustment (CVA), and Interest Rate Risk (IRR).</p>
-                        </div>
-                        <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
-                            <h4 class="text-base sm:text-lg font-bold text-white brand-font">Model Risk Management</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Independent model validation, conceptual soundness reviews, quantitative benchmarking, and governance frameworks across trading and banking book models.</p>
-                        </div>
-                        <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
-                            <h4 class="text-base sm:text-lg font-bold text-white brand-font">Regulatory Compliance & Stress Testing</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Regulatory capital (FRTB, Market Risk Rule), CVA Capital, Risk-Weighted Assets, CCAR stress scenarios, and Basel capital frameworks.</p>
-                        </div>
-                        <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
-                            <h4 class="text-base sm:text-lg font-bold text-white brand-font">Asset Liability Management (ALM)</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Balance sheet management, deposit modeling, liquidity risk frameworks, and interest rate sensitivity analysis.</p>
-                        </div>
-                        <div class="space-y-3 border-l-2 border-gold pl-4 sm:pl-6 py-2">
-                            <h4 class="text-base sm:text-lg font-bold text-white brand-font">Derivatives & Structured Products</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Valuation, term structure modeling, hedging, and cash-flow replication and approximation for derivatives and fixed income instruments.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- PANEL 5: CONTACT -->
-        <div id="panel-contact" class="tab-panel">
-            <section class="py-12 sm:py-16 bg-navy-900">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8">
-                    <h2 class="text-xs uppercase tracking-widest text-gold font-semibold">Initiate an Engagement</h2>
-                    <h3 class="text-2xl sm:text-4xl font-bold text-white brand-font">Need Financial Risk and Quantitative Model Solutions?</h3>
-                    
-                    <form action="mailto:info@branna-advisory.com,contact@branna-advisory.com,selemon@branna-advisory.com" method="post" enctype="text/plain" class="text-left space-y-4 sm:space-y-6 pt-4">
-                        <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
-                            <input type="text" name="Name" class="w-full bg-navy-800 border border-slate-700 rounded px-4 py-3 text-white focus:outline-none focus:border-gold text-sm" placeholder="Name" required>
-                            <input type="text" name="Organization" class="w-full bg-navy-800 border border-slate-700 rounded px-4 py-3 text-white focus:outline-none focus:border-gold text-sm" placeholder="Organization">
-                        </div>
-                        <textarea name="Message" rows="4" class="w-full bg-navy-800 border border-slate-700 rounded px-4 py-3 text-white focus:outline-none focus:border-gold text-sm" placeholder="Message / Details of your requirement..." required></textarea>
-                        <button type="submit" class="w-full py-3.5 bg-gold text-navy-900 font-bold rounded hover:bg-yellow-500 transition text-sm uppercase tracking-wider">
-                            Submit Advisory Request
-                        </button>
-                    </form>
-
-                    <p class="text-slate-300 text-sm font-normal pt-2">
-                        You can also email us directly at 
-                        <a href="mailto:contact@branna-advisory.com" class="text-gold hover:underline font-semibold">contact@branna-advisory.com</a>.
-                    </p>
-                </div>
-            </section>
-        </div>
-
-    </main>
+<script>
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const onScroll = () => {
+    let current = sections[0].id;
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= 120) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  };
+  document.addEventListener('scroll', onScroll);
+  onScroll();
+</script>
 
 </body>
 </html>
