@@ -32,11 +32,20 @@
   h1, h2, .font-serif { font-family: 'Cinzel', serif; }
   .nav-link.active { color: #D4AF37; }
   ::selection { background: #D4AF37; color: #0B132B; }
+  .diamond-list { list-style: none; }
+  .diamond-list li { position: relative; padding-left: 1.35rem; }
+  .diamond-list li::before {
+    content: '\25C6';
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    font-size: 0.6em;
+    color: #D4AF37;
+  }
 </style>
 </head>
 <body class="bg-navy-900 text-gray-200 antialiased min-h-screen">
 
-<!-- ============ NAV (unchanged from live site) ============ -->
 <header class="sticky top-0 z-50 bg-navy-900/95 backdrop-blur border-b border-white/5">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
     <a href="#home" class="font-serif font-bold text-lg tracking-wide text-white">
@@ -55,7 +64,6 @@
   </nav>
 </header>
 
-<!-- ============ HERO — updated copy ============ -->
 <section id="home" class="px-6 pt-24 pb-28 text-center">
   <div class="max-w-4xl mx-auto">
     <span class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-gold uppercase border border-gold/40 rounded-full px-4 py-2 mb-8">
@@ -63,16 +71,21 @@
       Quantitative Advisory &amp; Model Risk Governance
     </span>
 
-    <h1 class="font-serif font-extrabold text-4xl sm:text-5xl md:text-6xl leading-tight text-white mb-6">
-      <span class="text-gold">Precision</span> Meets <span class="text-gold">Pragmatism</span>.
+    <h1 class="mb-8">
+      <span class="inline-block text-left">
+        <span class="block font-serif font-extrabold text-4xl sm:text-5xl md:text-6xl leading-tight text-gold">Precision</span>
+        <span class="block font-sans uppercase font-semibold text-xl sm:text-2xl md:text-3xl tracking-wide text-white/80 pl-20 sm:pl-28 md:pl-36 mt-1 mb-4">where it counts,</span>
+        <span class="block font-serif font-extrabold text-4xl sm:text-5xl md:text-6xl leading-tight text-gold">Pragmatism</span>
+        <span class="block font-sans uppercase font-semibold text-xl sm:text-2xl md:text-3xl tracking-wide text-white/80 pl-20 sm:pl-28 md:pl-36 mt-1">where it delivers.</span>
+      </span>
     </h1>
 
-    <h2 class="font-sans font-normal italic text-lg sm:text-xl text-slate-400 mb-6">
-      Tailored advisory for developed and frontier markets alike.
+    <h2 class="font-sans italic font-normal text-xl sm:text-2xl md:text-3xl text-white tracking-wide mb-6">
+      Tailored advisory for <span class="text-gold not-italic font-semibold">developed</span> and <span class="text-gold not-italic font-semibold">frontier</span> markets alike.
     </h2>
 
     <p class="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed mb-10">
-      Branna LLC is the independent practice of Selemon Getachew, Ph.D., drawing on twenty-five years managing market and counterparty risk model lifecycles at Tier-1 financial institutions. The practice delivers quantitative risk management, financial modeling, independent model validation, regulatory compliance advisory, and risk management training.
+      Branna LLC is the independent practice of Selemon Getachew, Ph.D., drawing on over two decades of financial modeling and market, counterparty, and model risk management at Tier-1 financial institutions. The practice delivers quantitative risk management, financial modeling, independent model validation, regulatory compliance advisory, and risk management training.
     </p>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -86,7 +99,20 @@
   </div>
 </section>
 
-<!-- ============ ABOUT — updated copy ============ -->
+<section class="px-6 py-10 border-t border-white/5">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-center text-xs font-semibold tracking-widest text-slate-500 uppercase mb-6">Experience Across Institutions Including</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Brown University</span>
+      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Dartmouth College</span>
+      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">PNC</span>
+      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Wells Fargo</span>
+      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Fannie Mae</span>
+      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">AIG</span>
+    </div>
+  </div>
+</section>
+
 <section id="about" class="px-6 py-24 border-t border-white/5">
   <div class="max-w-4xl mx-auto">
     <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">About the Practice</p>
@@ -99,16 +125,16 @@
         <span class="text-gold">&#9670;</span> Biography &amp; Executive Background
       </h3>
       <p class="text-slate-300 leading-relaxed mb-4">
-        Selemon Getachew spent twenty-five years inside market and counterparty risk at three institutions examiners take seriously &mdash; Fannie Mae, Wells Fargo, and PNC &mdash; before founding Branna LLC in 2026.
+        Selemon Getachew spent over two decades as a financial quant across trading desks and market and counterparty risk functions at institutions that regulators take seriously &mdash; AIG, Fannie Mae, Wells Fargo, and PNC &mdash; before starting an independent practice.
       </p>
       <p class="text-slate-300 leading-relaxed mb-4">
-        At PNC, he served as the bank&rsquo;s primary senior quantitative authority for market risk and acted as interim leader of the Market Risk Analytics group for more than a year. He was the senior-most quant responsible for the full model lifecycle of PNC&rsquo;s enterprise Potential Future Exposure (PFE) engine &mdash; covering every OTC derivative transaction on the bank&rsquo;s books &mdash; leading all updates, fixes, enhancements, governance, audit remediation, and regulatory defense.
+        As Senior Vice President at PNC, he served as the bank&rsquo;s primary senior quantitative authority for market risk and acted as interim leader of the Market Risk Analytics group for more than a year. He was the senior-most quant responsible for the full model lifecycle of PNC&rsquo;s enterprise Potential Future Exposure (PFE) engine &mdash; covering every OTC derivative transaction on the bank&rsquo;s books &mdash; leading all updates, fixes, enhancements, governance, audit remediation, and regulatory defense.
       </p>
       <p class="text-slate-400 leading-relaxed mb-4">
-        Earlier, as VP and Model Validation Co-Lead at PNC and Model Validation Manager at Wells Fargo, he ran independent validation programs spanning VaR, Economic Capital, CVA, CCAR stress models, and interest rate, FX, commodity, and credit derivatives. Before that, he built valuation and sensitivity models for fixed income and interest rate derivatives at Fannie Mae and AIG Trading Group.
+        Earlier, as Vice President and Model Validation Co-Lead at PNC, and Model Validation Manager at Wells Fargo, he ran independent validation programs spanning VaR, Economic Capital, CVA, CCAR stress models, and interest rate, FX, commodity, and credit derivatives. Before that, he built valuation and sensitivity models for fixed income and interest rate derivatives at Fannie Mae, and for commodity and FX derivatives at AIG Trading Group.
       </p>
       <p class="text-slate-400 leading-relaxed">
-        He holds a Ph.D. in Mathematics from Brown University and a B.A. in Mathematics, Computer Science, and Studio Art from Dartmouth College, where he graduated magna cum laude and was elected to Phi Beta Kappa.
+        He holds a Ph.D. in Mathematics from Brown University and a B.A. in Mathematics and Computer Science (double major), with a minor in Studio Art (Painting), from Dartmouth College, where he graduated magna cum laude and was elected to Phi Beta Kappa.
       </p>
     </div>
 
@@ -127,7 +153,6 @@
   </div>
 </section>
 
-<!-- ============ SERVICES — updated copy ============ -->
 <section id="services" class="px-6 py-24 border-t border-white/5">
   <div class="max-w-5xl mx-auto text-center">
     <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">Core Practice Areas</p>
@@ -140,27 +165,42 @@
       <div class="border border-white/10 rounded-lg p-8 hover:border-gold/40 transition">
         <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-2">Developed Markets</p>
         <h3 class="font-serif font-bold text-xl text-white mb-4">Quantitative Model Advisory</h3>
-        <p class="text-slate-300 leading-relaxed mb-6">
-          Independent validation and advisory for banking and market-risk models, drawing on direct experience running the full lifecycle of an enterprise PFE engine and defending it through formal regulatory exams. Engagements cover model risk governance, CCAR stress-model review, FRTB and SA-CVA implementation support, and custom derivative pricing engine design and testing.
+        <p class="text-slate-400 leading-relaxed mb-4">
+          Independent validation and advisory for banking and market-risk models, drawing on direct experience running the full lifecycle of an enterprise PFE engine and defending it through formal regulatory exams. Engagements include:
         </p>
+        <ul class="diamond-list space-y-1.5 text-slate-200 leading-relaxed mb-6">
+          <li>Model building and testing for valuation and exposure simulation &mdash; P&amp;L, VaR, PFE, and CVA</li>
+          <li>Term-structure and exposure model calibration</li>
+          <li>Onboarding of vendor risk and modeling systems</li>
+          <li>Model validation and model risk governance</li>
+          <li>CCAR stress-model review</li>
+          <li>FRTB and SA-CVA implementation support</li>
+          <li>Mentoring and training of modeling staff</li>
+        </ul>
         <hr class="border-white/10 mb-4" />
-        <p class="text-sm text-slate-400"><span class="text-gold font-semibold">Focus:</span> Model Risk Governance, Regulatory Exam Defense &amp; Derivatives Modeling</p>
+        <p class="text-sm text-slate-400"><span class="text-gold font-semibold">Focus:</span> Model Validation &amp; Risk Governance, Regulatory Exam Defense &amp; Derivatives Modeling</p>
       </div>
 
       <div class="border border-white/10 rounded-lg p-8 hover:border-gold/40 transition">
         <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-2">Frontier Markets</p>
         <h3 class="font-serif font-bold text-xl text-white mb-4">Capacity &amp; Regulatory Solutions</h3>
-        <p class="text-slate-300 leading-relaxed mb-6">
-          Risk-management capacity building for institutions establishing or maturing their model risk and market risk functions: structured debt and cash-flow modeling, staff training, and regulatory-readiness programs built from the same frameworks used at Tier-1 U.S. banks, scaled to what a frontier-market institution can realistically run.
+        <p class="text-slate-400 leading-relaxed mb-4">
+          Risk-management capacity building for institutions developing their market and counterparty risk, asset-liability management, and exposure-hedging functions, built from the same frameworks used at Tier-1 U.S. banks and scaled to what a frontier-market institution can realistically run. Capabilities include:
         </p>
+        <ul class="diamond-list space-y-1.5 text-slate-200 leading-relaxed mb-6">
+          <li>Structured debt and cash-flow modeling</li>
+          <li>Regulatory-readiness programs (e.g., Basel, capital buffers, liquidity ratios)</li>
+          <li>Building of valuation, risk-measurement, and risk-management models</li>
+          <li>Yield-curve and FX term-structure construction</li>
+          <li>Staff and executive training</li>
+        </ul>
         <hr class="border-white/10 mb-4" />
-        <p class="text-sm text-slate-400"><span class="text-gold font-semibold">Focus:</span> Institutional Readiness, Risk Framework Design &amp; Team Training</p>
+        <p class="text-sm text-slate-400"><span class="text-gold font-semibold">Focus:</span> Institutional Readiness, Risk Framework Design &amp; Executive Training</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CAPABILITIES — preserved as on live site ============ -->
 <section id="capabilities" class="px-6 py-24 border-t border-white/5">
   <div class="max-w-5xl mx-auto">
     <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">Specialized Expertise</p>
@@ -168,30 +208,44 @@
 
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-10">
       <div class="border-l-2 border-gold pl-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 mb-3">
+          <path d="M4 19V9"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M4 19h16"/>
+        </svg>
         <h3 class="font-serif font-bold text-white mb-2">Market Risk Management</h3>
         <p class="text-slate-400 text-sm leading-relaxed">Quantifying, modeling, and managing exposure across Interest Rate Risk, Foreign Exchange (FX), Commodity Price Risk, Counterparty Credit Risk, Value-at-Risk (VaR), Expected Shortfall (ES), Potential Future Exposure (PFE), Credit Value Adjustment (CVA), and Interest Rate Risk (IRR).</p>
       </div>
       <div class="border-l-2 border-gold pl-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 mb-3">
+          <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/>
+        </svg>
         <h3 class="font-serif font-bold text-white mb-2">Model Risk Management</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Independent model validation, conceptual soundness reviews, quantitative benchmarking, and governance frameworks across trading and banking book models.</p>
+        <p class="text-slate-400 text-sm leading-relaxed">Independent model validation, conceptual soundness reviews, quantitative benchmarking, model documentation supporting valuation and regulatory approval, and governance frameworks across trading and banking book models.</p>
       </div>
       <div class="border-l-2 border-gold pl-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 mb-3">
+          <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5"/><path d="M9.5 14.5l1.5 1.5 3-3.5"/>
+        </svg>
         <h3 class="font-serif font-bold text-white mb-2">Regulatory Compliance &amp; Stress Testing</h3>
         <p class="text-slate-400 text-sm leading-relaxed">Regulatory capital (FRTB, Market Risk Rule), CVA Capital, Risk-Weighted Assets, CCAR stress scenarios, and Basel capital frameworks.</p>
       </div>
       <div class="border-l-2 border-gold pl-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 mb-3">
+          <path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0L5 7z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0l-3-6z"/>
+        </svg>
         <h3 class="font-serif font-bold text-white mb-2">Asset Liability Management (ALM)</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Balance sheet management, deposit modeling, liquidity risk frameworks, and interest rate sensitivity analysis.</p>
+        <p class="text-slate-400 text-sm leading-relaxed">Balance sheet management, deposit analytics, liquidity risk frameworks, and interest rate sensitivity analysis.</p>
       </div>
       <div class="border-l-2 border-gold pl-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 mb-3">
+          <circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/>
+        </svg>
         <h3 class="font-serif font-bold text-white mb-2">Derivatives &amp; Structured Products</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Valuation, term structure modeling, hedging, and cash-flow replication and approximation for derivatives and fixed income instruments.</p>
+        <p class="text-slate-400 text-sm leading-relaxed">Valuation, term structure modeling, hedging, and cash-flow replication and simulation for derivatives and fixed income instruments.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT — preserved, email made consistent with resume ============ -->
 <section id="contact" class="px-6 py-24 border-t border-white/5">
   <div class="max-w-2xl mx-auto text-center">
     <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">Initiate an Engagement</p>
