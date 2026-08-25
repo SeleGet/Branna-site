@@ -42,6 +42,27 @@
     font-size: 0.6em;
     color: #D4AF37;
   }
+
+  /* Mobile: present each section as its own full-screen "page" that the
+     user swipes/scrolls between, rather than one long continuous page. */
+  @media (max-width: 767px) {
+    html {
+      scroll-snap-type: y mandatory;
+    }
+    section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+    }
+    section > div {
+      width: 100%;
+    }
+  }
+
+  #mobile-menu a.nav-link.active { color: #D4AF37; }
 </style>
 </head>
 <body class="bg-navy-900 text-gray-200 antialiased min-h-screen">
@@ -58,11 +79,33 @@
       <a href="#capabilities" class="nav-link hover:text-gold transition">Capabilities</a>
       <a href="#contact" class="nav-link hover:text-gold transition">Contact</a>
     </div>
-    <a href="#contact" class="border border-gold text-gold text-xs sm:text-sm font-semibold tracking-wider uppercase px-4 sm:px-5 py-2.5 rounded hover:bg-gold hover:text-navy-900 transition">
+    <a href="#contact" class="hidden md:inline-block border border-gold text-gold text-xs sm:text-sm font-semibold tracking-wider uppercase px-4 sm:px-5 py-2.5 rounded hover:bg-gold hover:text-navy-900 transition">
       Start an Engagement
     </a>
+    <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-white p-2 -mr-2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+        <path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/>
+      </svg>
+    </button>
   </nav>
 </header>
+
+<!-- Mobile full-screen section menu -->
+<div id="mobile-menu" style="display:none;" class="fixed inset-0 z-[60] bg-navy-900/98 backdrop-blur-sm flex-col items-center justify-center gap-8 md:hidden">
+  <button id="mobile-menu-close" type="button" aria-label="Close menu" class="absolute top-6 right-6 text-white p-2">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+      <path d="M6 6l12 12"/><path d="M18 6L6 18"/>
+    </svg>
+  </button>
+  <a href="#home" class="nav-link active font-serif text-2xl text-white hover:text-gold transition">Home</a>
+  <a href="#about" class="nav-link font-serif text-2xl text-white hover:text-gold transition">About</a>
+  <a href="#services" class="nav-link font-serif text-2xl text-white hover:text-gold transition">Services</a>
+  <a href="#capabilities" class="nav-link font-serif text-2xl text-white hover:text-gold transition">Capabilities</a>
+  <a href="#contact" class="nav-link font-serif text-2xl text-white hover:text-gold transition">Contact</a>
+  <a href="#contact" class="mt-4 bg-gold text-navy-900 font-bold text-sm uppercase tracking-wider px-8 py-3.5 rounded">
+    Start an Engagement
+  </a>
+</div>
 
 <section id="home" class="px-6 pt-24 pb-28 text-center">
   <div class="max-w-4xl mx-auto">
@@ -407,6 +450,34 @@
   };
   document.addEventListener('scroll', onScroll);
   onScroll();
+
+  // Mobile full-screen section menu
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const closeBtn = document.getElementById('mobile-menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  const openMenu = () => {
+    mobileMenu.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    menuBtn.setAttribute('aria-expanded', 'true');
+  };
+  const closeMenu = () => {
+    mobileMenu.style.display = 'none';
+    document.body.style.overflow = '';
+    menuBtn.setAttribute('aria-expanded', 'false');
+  };
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // Reset any inline mobile-menu display state if the viewport is resized to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) closeMenu();
+  });
 </script>
 
 </body>
