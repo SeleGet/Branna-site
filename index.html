@@ -43,23 +43,22 @@
     color: #D4AF37;
   }
 
-  /* Mobile: present each section as its own full-screen "page" that the
-     user swipes/scrolls between, rather than one long continuous page. */
-  @media (max-width: 767px) {
-    html {
-      scroll-snap-type: y mandatory;
-    }
-    section {
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      min-height: 100vh;
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-    }
-    section > div {
-      width: 100%;
-    }
+  /* Present each section as its own full-screen "page" that the user
+     scrolls/swipes between, rather than one long continuous page.
+     Applies on both desktop and mobile. */
+  html {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 5rem; /* keep section tops clear of the sticky header */
+  }
+  section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+  section > div {
+    width: 100%;
   }
 
   #mobile-menu a.nav-link.active { color: #D4AF37; }
@@ -412,20 +411,16 @@
       Discuss Your Risk Advisory Needs
     </h2>
 
-    <form class="text-left space-y-4">
-      <div class="grid sm:grid-cols-2 gap-4">
-        <input type="text" placeholder="Name" class="w-full bg-navy-800 border border-white/10 rounded px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-gold" />
-        <input type="text" placeholder="Organization" class="w-full bg-navy-800 border border-white/10 rounded px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-gold" />
-      </div>
-      <textarea placeholder="Message / Details of your requirement..." rows="5" class="w-full bg-navy-800 border border-white/10 rounded px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-gold"></textarea>
-      <button type="submit" class="w-full py-3.5 bg-gold text-navy-900 font-bold rounded hover:bg-yellow-500 transition text-sm uppercase tracking-wider">
-        Submit Advisory Request
-      </button>
-    </form>
+    <p class="text-slate-300 leading-relaxed mb-10">
+      For engagement inquiries, proposals, or general questions, reach out directly by email &mdash; expect a prompt response.
+    </p>
+
+    <a href="mailto:selemon@branna-advisory.com?subject=Advisory%20Inquiry" class="inline-block bg-gold text-navy-900 font-bold text-sm uppercase tracking-wider px-8 py-3.5 rounded hover:bg-yellow-500 transition">
+      Email Selemon Getachew
+    </a>
 
     <p class="text-slate-400 text-sm mt-6">
-      You can also email us directly at
-      <a href="mailto:selemon@branna-advisory.com" class="text-gold hover:underline font-semibold">selemon@branna-advisory.com</a>.
+      <a href="mailto:selemon@branna-advisory.com?subject=Advisory%20Inquiry" class="text-gold hover:underline font-semibold">selemon@branna-advisory.com</a>
     </p>
   </div>
 </section>
@@ -478,6 +473,7 @@
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) closeMenu();
   });
+
 </script>
 
 </body>
