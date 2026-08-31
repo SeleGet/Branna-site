@@ -43,25 +43,71 @@
     color: #D4AF37;
   }
 
-  /* Present each section as its own full-screen "page" that the user
-     scrolls/swipes between, rather than one long continuous page.
-     Applies on both desktop and mobile. */
-  html {
-    scroll-snap-type: y proximity;
-    scroll-padding-top: 5rem; /* keep section tops clear of the sticky header */
+  /* App-shell layout: the header sits at a fixed height, and everything
+     below it is a single "stage" showing exactly one section at a time —
+     true separate pages, not a scrolling one-pager. Applies at every
+     screen size. */
+  html, body {
+    height: 100%;
+    overflow: hidden;
   }
-  section {
-    scroll-snap-align: start;
-    min-height: 100vh;
-    min-height: 100svh;
+  body {
     display: flex;
-    align-items: center;
+    flex-direction: column;
   }
-  section > div {
+  #page-stage {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+  section.page {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    display: none;
+    flex-direction: column;
+  }
+  section.page.active-page {
+    display: flex;
+  }
+  /* Vertical centering via auto margins (not justify-content/align-items):
+     auto margins collapse to 0 when content is taller than the section,
+     so the top of tall sections stays reachable by scrolling instead of
+     being clipped, while short sections still look vertically centered.
+     Using plain margin (rather than turning this wrapper into its own
+     flex container) also means its children keep their normal block
+     layout, so existing text-center / mx-auto styling inside each
+     section still centers things exactly as it did before. */
+  section.page > div {
     width: 100%;
+    /* Vertical margins only — left/right are intentionally left alone
+       so each section's own mx-auto (max-w-4xl mx-auto, etc.) still
+       horizontally centers it. Using the "margin: auto 0" shorthand
+       here previously zeroed left/right explicitly, which silently
+       overrode mx-auto and pinned every section flush-left as soon as
+       its max-width cap kicked in (invisible on narrow/mobile widths,
+       very visible on desktop). */
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   #mobile-menu a.nav-link.active { color: #D4AF37; }
+
+  /* Mobile menu: soft fade + scale instead of an instant display snap */
+  #mobile-menu {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.97);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+  #mobile-menu.menu-open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
+  }
 </style>
 </head>
 <body class="bg-navy-900 text-gray-200 antialiased min-h-screen">
@@ -71,14 +117,14 @@
     <a href="#home" class="font-serif font-bold text-lg tracking-wide text-white">
       BRAN<span class="text-gold text-sm align-super italic" style="font-family: 'EB Garamond', serif;">n</span>A
     </a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
-      <a href="#home" class="nav-link active hover:text-gold transition">Home</a>
-      <a href="#about" class="nav-link hover:text-gold transition">About</a>
-      <a href="#services" class="nav-link hover:text-gold transition">Services</a>
-      <a href="#capabilities" class="nav-link hover:text-gold transition">Capabilities</a>
-      <a href="#contact" class="nav-link hover:text-gold transition">Contact</a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#home" class="nav-link font-sans text-sm font-medium text-white hover:text-gold transition">Home</a>
+      <a href="#about" class="nav-link font-sans text-sm font-medium text-white hover:text-gold transition">About</a>
+      <a href="#services" class="nav-link font-sans text-sm font-medium text-white hover:text-gold transition">Services</a>
+      <a href="#capabilities" class="nav-link font-sans text-sm font-medium text-white hover:text-gold transition">Capabilities</a>
+      <a href="#contact" class="nav-link font-sans text-sm font-medium text-white hover:text-gold transition">Contact</a>
     </div>
-    <a href="#contact" class="hidden md:inline-block border border-gold text-gold text-xs sm:text-sm font-semibold tracking-wider uppercase px-4 sm:px-5 py-2.5 rounded hover:bg-gold hover:text-navy-900 transition">
+    <a href="#contact" class="hidden md:inline-block border border-gold text-gold font-bold text-sm uppercase tracking-wider px-6 py-3 rounded hover:bg-gold hover:text-navy-900 transition">
       Start an Engagement
     </a>
     <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-white p-2 -mr-2">
@@ -89,14 +135,14 @@
   </nav>
 </header>
 
-<!-- Mobile full-screen section menu -->
-<div id="mobile-menu" style="display:none;" class="fixed inset-0 z-[60] bg-navy-900/98 backdrop-blur-sm flex-col items-center justify-center gap-8 md:hidden">
+<!-- Full-screen section menu: mobile-only navigation (desktop uses the inline nav bar above) -->
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-navy-900/98 backdrop-blur-sm flex-col items-center justify-center gap-8 md:hidden">
   <button id="mobile-menu-close" type="button" aria-label="Close menu" class="absolute top-6 right-6 text-white p-2">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
       <path d="M6 6l12 12"/><path d="M18 6L6 18"/>
     </svg>
   </button>
-  <a href="#home" class="nav-link active font-serif text-2xl text-white hover:text-gold transition">Home</a>
+  <a href="#home" class="nav-link font-serif text-2xl text-white hover:text-gold transition">Home</a>
   <a href="#about" class="nav-link font-serif text-2xl text-white hover:text-gold transition">About</a>
   <a href="#services" class="nav-link font-serif text-2xl text-white hover:text-gold transition">Services</a>
   <a href="#capabilities" class="nav-link font-serif text-2xl text-white hover:text-gold transition">Capabilities</a>
@@ -106,7 +152,9 @@
   </a>
 </div>
 
-<section id="home" class="px-6 pt-24 pb-28 text-center">
+<div id="page-stage">
+
+<section id="home" class="page px-6 pt-24 pb-28 text-center">
   <div class="max-w-4xl mx-auto">
     <span class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-gold uppercase border border-gold/40 rounded-full px-4 py-2 mb-8">
       <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
@@ -138,24 +186,22 @@
         See the Track Record
       </a>
     </div>
-  </div>
-</section>
 
-<section class="px-6 py-10 border-t border-white/5">
-  <div class="max-w-5xl mx-auto">
-    <p class="text-center text-xs font-semibold tracking-widest text-slate-500 uppercase mb-6">Experience Across Institutions Including</p>
-    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Brown</span>
-      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Dartmouth</span>
-      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">PNC</span>
-      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Wells Fargo</span>
-      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Fannie Mae</span>
-      <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">AIG Trading</span>
+    <div class="mt-16 pt-10 border-t border-white/10">
+      <p class="text-center text-xs font-semibold tracking-widest text-slate-500 uppercase mb-6">Experience Across Institutions Including</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+        <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Brown</span>
+        <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Dartmouth</span>
+        <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">PNC</span>
+        <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Wells Fargo</span>
+        <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">Fannie Mae</span>
+        <span class="font-serif text-slate-400 text-base sm:text-lg tracking-wide">AIG Trading</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="about" class="px-6 py-24 border-t border-white/5">
+<section id="about" class="page px-6 py-24 border-t border-white/5">
   <div class="max-w-4xl mx-auto">
     <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">About the Practice</p>
     <h2 class="font-serif font-bold text-3xl sm:text-4xl text-white mb-1">Selemon Getachew, Ph.D.</h2>
@@ -195,7 +241,7 @@
   </div>
 </section>
 
-<section id="services" class="px-6 py-24 border-t border-white/5">
+<section id="services" class="page px-6 py-24 border-t border-white/5">
   <div class="max-w-5xl mx-auto text-center">
     <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">Core Practice Areas</p>
     <h2 class="font-serif font-bold text-3xl sm:text-4xl text-white mb-4">Advisory &amp; Capacity Services</h2>
@@ -359,7 +405,7 @@
   </div>
 </section>
 
-<section id="capabilities" class="px-6 py-24 border-t border-white/5">
+<section id="capabilities" class="page px-6 py-24 border-t border-white/5">
   <div class="max-w-5xl mx-auto">
     <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">Specialized Expertise</p>
     <h2 class="font-serif font-bold text-3xl sm:text-4xl text-white mb-14">Strategic Capabilities</h2>
@@ -404,7 +450,7 @@
   </div>
 </section>
 
-<section id="contact" class="px-6 py-24 border-t border-white/5">
+<section id="contact" class="page px-6 py-24 border-t border-white/5">
   <div class="max-w-2xl mx-auto text-center">
     <p class="text-xs font-semibold tracking-widest text-gold uppercase mb-3">Initiate an Engagement</p>
     <h2 class="font-serif font-bold text-3xl sm:text-4xl text-white mb-12 leading-snug">
@@ -422,42 +468,74 @@
     <p class="text-slate-400 text-sm mt-6">
       <a href="mailto:selemon@branna-advisory.com?subject=Advisory%20Inquiry" class="text-gold hover:underline font-semibold">selemon@branna-advisory.com</a>
     </p>
+
+    <footer class="mt-16 pt-8 border-t border-white/5">
+      <p class="text-slate-500 text-xs">&copy; 2026 Branna LLC. Quantitative Risk &amp; Financial Advisory.</p>
+    </footer>
   </div>
 </section>
 
-<footer class="px-6 py-10 border-t border-white/5 text-center">
-  <p class="text-slate-500 text-xs">&copy; 2026 Branna LLC. Quantitative Risk &amp; Financial Advisory.</p>
-</footer>
+</div><!-- /#page-stage -->
 
 <script>
-  // Highlight active nav link on scroll
-  const sections = document.querySelectorAll('section[id]');
+  // ---- Page controller: shows exactly one section at a time (true
+  // separate pages, not a scrolling one-pager). The hamburger menu is
+  // the only way to move between pages, at every screen size. ----
+  const pageIds = ['home', 'about', 'services', 'capabilities', 'contact'];
+  const pageEls = pageIds.map(id => document.getElementById(id));
   const navLinks = document.querySelectorAll('.nav-link');
-  const onScroll = () => {
-    let current = sections[0].id;
-    sections.forEach(sec => {
-      const rect = sec.getBoundingClientRect();
-      if (rect.top <= 120) current = sec.id;
-    });
-    navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
-  };
-  document.addEventListener('scroll', onScroll);
-  onScroll();
+  let currentIndex = 0;
 
-  // Mobile full-screen section menu
+  function showPage(id, opts) {
+    opts = opts || {};
+    const idx = pageIds.indexOf(id);
+    if (idx === -1) return;
+    currentIndex = idx;
+    pageEls.forEach(p => p.classList.remove('active-page'));
+    pageEls[idx].classList.add('active-page');
+    pageEls[idx].scrollTop = 0;
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+    });
+    if (!opts.skipHash) {
+      history.replaceState(null, '', '#' + id);
+    }
+  }
+
+  // Intercept every in-page anchor link (menu links, hero CTAs, etc.)
+  // and turn it into a page switch instead of a browser scroll-to-anchor.
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const targetId = link.getAttribute('href').slice(1);
+    if (!pageIds.includes(targetId)) return;
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPage(targetId);
+    });
+  });
+
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.replace('#', '');
+    if (pageIds.includes(id)) showPage(id, { skipHash: true });
+  });
+
+  // Initial page: honor a shareable/bookmarked hash, default to Home
+  (function init() {
+    const id = location.hash.replace('#', '');
+    showPage(pageIds.includes(id) ? id : 'home', { skipHash: true });
+  })();
+
+  // Full-screen section menu (hamburger) — the sole navigation method
   const menuBtn = document.getElementById('mobile-menu-btn');
   const closeBtn = document.getElementById('mobile-menu-close');
   const mobileMenu = document.getElementById('mobile-menu');
 
   const openMenu = () => {
-    mobileMenu.style.display = 'flex';
+    mobileMenu.classList.add('menu-open');
     document.body.style.overflow = 'hidden';
     menuBtn.setAttribute('aria-expanded', 'true');
   };
   const closeMenu = () => {
-    mobileMenu.style.display = 'none';
+    mobileMenu.classList.remove('menu-open');
     document.body.style.overflow = '';
     menuBtn.setAttribute('aria-expanded', 'false');
   };
@@ -469,11 +547,11 @@
     if (e.key === 'Escape') closeMenu();
   });
 
-  // Reset any inline mobile-menu display state if the viewport is resized to desktop
+  // The overlay menu is mobile-only (desktop shows the inline nav bar);
+  // if it's open and the viewport is resized up to desktop, close it.
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) closeMenu();
   });
-
 </script>
 
 </body>
